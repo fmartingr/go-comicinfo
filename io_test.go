@@ -20,7 +20,7 @@ func TestWriteRead(t *testing.T) {
 		t.Errorf("error writing ComicInfo: %v", err)
 	}
 
-	ci2, err := Read(path)
+	ci2, err := Open(path)
 	if err != nil {
 		t.Errorf("error reading ComicInfo: %v", err)
 	}
