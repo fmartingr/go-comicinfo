@@ -25,3 +25,10 @@ jobs:
       uses: gotesttools/gotestfmt-action@65f1d2228f06cc5e828b84597440fbd063d12ea2 # v2.1.0
 
     - run: make unittest
+      env:
+        EXTRA_TEST_FLAGS: -covermode=atomic -coverprofile=coverage.out
+
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v3.1.4
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
