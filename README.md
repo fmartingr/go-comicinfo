@@ -1,8 +1,8 @@
 # go-comicinfo
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/fmartingr/go-comicinfo.svg)](https://pkg.go.dev/github.com/fmartingr/go-comicinfo)
-[![Go Report Card](https://goreportcard.com/badge/github.com/fmartingr/go-comicinfo)](https://goreportcard.com/report/github.com/fmartingr/go-comicinfo)
-[![codecov](https://codecov.io/gh/fmartingr/go-comicinfo/branch/master/graph/badge.svg?token=ZQZQZQZQZQ)](https://codecov.io/gh/fmartingr/go-comicinfo)
+[![Go Reference](https://pkg.go.dev/badge/github.com/fmartingr/go-comicinfo/v2.svg)](https://pkg.go.dev/github.com/fmartingr/go-comicinfo/v2)
+[![Go Report Card](https://goreportcard.com/badge/github.com/fmartingr/go-comicinfo/v2)](https://goreportcard.com/report/github.com/fmartingr/go-comicinfo/v2)
+[![codecov](https://codecov.io/gh/fmartingr/go-comicinfo/branch/latest/graph/badge.svg?token=ZQZQZQZQZQ)](https://codecov.io/gh/fmartingr/go-comicinfo)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Golang implementation of the [ComicInfo.xml specification](https://anansi-project.github.io/docs/category/comicinfo) to read and write `comicinfo.xml` files.
