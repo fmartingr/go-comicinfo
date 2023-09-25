@@ -94,7 +94,7 @@ func TestFullSchema(t *testing.T) {
 	// Write the ComicInfo struct to a temporary file
 	ciPath := filepath.Join(tmpDir, "comicinfo.xml")
 
-	err = Write(ci, ciPath)
+	err = Save(ci, ciPath)
 	if err != nil {
 		t.Errorf("error writing ComicInfo: %v", err)
 	}

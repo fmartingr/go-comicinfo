@@ -1,5 +1,11 @@
 package comicinfo
 
+import (
+	"bytes"
+	"encoding/xml"
+	"fmt"
+)
+
 var xmlHeader = []byte(`<?xml version="1.0" encoding="UTF-8"?>`)
 
 // ComicInfo ...
@@ -51,14 +57,23 @@ type ComicInfo struct {
 	// XsiSchemaLocation string `xml:"xsi:schemaLocation,attr,omitempty"`
 }
 
+func (ci *ComicInfo) Bytes() ([]byte, error) {
+	contents, err := xml.Marshal(ci)
+	if err != nil {
+		return nil, fmt.Errorf("error marshalling ComicInfo: %w", err)
+	}
+
+	return bytes.Join([][]byte{xmlHeader, contents}, []byte("")), nil
+}
+
 func (ci *ComicInfo) SetXMLAttributes() {
 	ci.XmlnsXsd = "http://www.w3.org/2001/XMLSchema"
 	ci.XmlNsXsi = "http://www.w3.org/2001/XMLSchema-instance"
 }
 
 // New provides a new ComicInfo struct with the XML attributes set
-func NewComicInfo() ComicInfo {
-	ci := ComicInfo{}
+func NewComicInfo() *ComicInfo {
+	ci := &ComicInfo{}
 	ci.SetXMLAttributes()
 	return ci
 }
