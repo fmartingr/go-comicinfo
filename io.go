@@ -22,7 +22,7 @@ func Write(ci ComicInfo, path string) error {
 }
 
 // Read reads the ComicInfo spec from the specified path.
-func Read(path string) (ComicInfo, error) {
+func Open(path string) (ComicInfo, error) {
 	f, err := os.ReadFile(path)
 	if err != nil {
 		return ComicInfo{}, fmt.Errorf("error reading file: %w", err)
