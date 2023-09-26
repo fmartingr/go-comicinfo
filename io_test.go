@@ -48,3 +48,13 @@ func TestWriteOpen(t *testing.T) {
 
 	require.Equal(t, ci, ci2)
 }
+
+func TestReadError(t *testing.T) {
+	_, err := Read(bytes.NewReader([]byte("")))
+	require.Error(t, err)
+}
+
+func TestOpenError(t *testing.T) {
+	_, err := Open("nonexistent.xml")
+	require.Error(t, err)
+}

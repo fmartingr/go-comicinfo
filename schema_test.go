@@ -77,19 +77,21 @@ func TestFullSchema(t *testing.T) {
 	ci.AgeRating = AgeRatingEveryone
 	ci.MainCharacterOrTeam = "Test"
 	ci.Review = "Test"
-	ci.Pages.Pages = append(ci.Pages.Pages, ComicPageInfo{
-		Image:       1,
-		Type:        ComicPageTypeEditorial,
-		DoublePage:  false,
-		ImageSize:   999,
-		Key:         "?",
-		Bookmark:    "yes",
-		ImageWidth:  20,
-		ImageHeight: 21,
-	})
 	ci.CommunityRating = 5.0
 	ci.MainCharacterOrTeam = "Test"
 	ci.Review = "Test"
+
+	page := NewComicPageInfo()
+	page.Image = 1
+	page.Type = ComicPageTypeEditorial
+	page.DoublePage = false
+	page.ImageSize = 999
+	page.Key = "?"
+	page.Bookmark = "yes"
+	page.ImageWidth = 20
+	page.ImageHeight = 21
+
+	ci.Pages.Pages = append(ci.Pages.Pages, page)
 
 	// Write the ComicInfo struct to a temporary file
 	ciPath := filepath.Join(tmpDir, "comicinfo.xml")
