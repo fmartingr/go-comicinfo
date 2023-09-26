@@ -8,6 +8,17 @@ import (
 	"os"
 )
 
+// Read reads the ComicInfo spec from the specified reader
+func Read(r io.Reader) (*ComicInfo, error) {
+	var ci ComicInfo
+	err := xml.NewDecoder(r).Decode(&ci)
+	if err != nil {
+		return nil, fmt.Errorf("error unmarshalling ComicInfo: %w", err)
+	}
+
+	return &ci, nil
+}
+
 // Write writes the ComicInfo spec to the specified writter
 func Write(ci *ComicInfo, w io.Writer) error {
 	contents, err := xml.Marshal(ci)
@@ -22,10 +33,15 @@ func Write(ci *ComicInfo, w io.Writer) error {
 	return nil
 }
 
-// Read reads the ComicInfo spec from the specified reader
-func Read(r io.Reader) (*ComicInfo, error) {
+// Read reads the ComicInfo spec from the specified path.
+func Open(path string) (*ComicInfo, error) {
+	f, err := os.ReadFile(path)
+	if err != nil {
+		return nil, fmt.Errorf("error reading file: %w", err)
+	}
+
 	var ci ComicInfo
-	err := xml.NewDecoder(r).Decode(&ci)
+	err = xml.Unmarshal(f, &ci)
 	if err != nil {
 		return nil, fmt.Errorf("error unmarshalling ComicInfo: %w", err)
 	}
@@ -46,20 +62,4 @@ func Save(ci *ComicInfo, path string) error {
 	}
 
 	return nil
-}
-
-// Read reads the ComicInfo spec from the specified path.
-func Open(path string) (*ComicInfo, error) {
-	f, err := os.ReadFile(path)
-	if err != nil {
-		return nil, fmt.Errorf("error reading file: %w", err)
-	}
-
-	var ci ComicInfo
-	err = xml.Unmarshal(f, &ci)
-	if err != nil {
-		return nil, fmt.Errorf("error unmarshalling ComicInfo: %w", err)
-	}
-
-	return &ci, nil
 }
