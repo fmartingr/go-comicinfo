@@ -111,6 +111,14 @@ type Pages struct {
 	Pages []ComicPageInfo `xml:"Page,omitempty"`
 }
 
+func (p *Pages) Append(page ComicPageInfo) {
+	p.Pages = append(p.Pages, page)
+}
+
+func (p *Pages) Len() int {
+	return len(p.Pages)
+}
+
 // ComicPageInfo defines the ComicPageInfo type
 type ComicPageInfo struct {
 	Image       int           `xml:"Image,attr"`
