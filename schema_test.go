@@ -91,7 +91,7 @@ func TestFullSchema(t *testing.T) {
 	page.ImageWidth = 20
 	page.ImageHeight = 21
 
-	ci.Pages.Pages = append(ci.Pages.Pages, page)
+	ci.Pages.Append(page)
 
 	// Write the ComicInfo struct to a temporary file
 	ciPath := filepath.Join(tmpDir, "comicinfo.xml")
@@ -109,4 +109,11 @@ func TestFullSchema(t *testing.T) {
 	}
 
 	require.NoError(t, cmd.Err, output)
+}
+
+func TestPagesLen(t *testing.T) {
+	pages := Pages{}
+	require.Equal(t, 0, pages.Len())
+	pages.Append(NewComicPageInfo())
+	require.Equal(t, 1, pages.Len())
 }
