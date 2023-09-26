@@ -57,10 +57,10 @@ func (ci *ComicInfo) SetXMLAttributes() {
 }
 
 // New provides a new ComicInfo struct with the XML attributes set
-func NewComicInfo() ComicInfo {
+func NewComicInfo() *ComicInfo {
 	ci := ComicInfo{}
 	ci.SetXMLAttributes()
-	return ci
+	return &ci
 }
 
 // YesNo defines the YesNo type
