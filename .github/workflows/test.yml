@@ -14,7 +14,7 @@ jobs:
 
     name: Go unit tests
     steps:
-    - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+    - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
 
     - name: Install libxml2-utils for xmllint
       run: sudo apt-get install libxml2-utils
@@ -32,6 +32,6 @@ jobs:
         EXTRA_TEST_FLAGS: -covermode=atomic -coverprofile=coverage.out
 
     - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@e0b68c6749509c5f83f984dd99a76a1c1a231044 # v4.0.1
+      uses: codecov/codecov-action@84508663e988701840491b86de86b666e8a86bed # v4.3.0
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
